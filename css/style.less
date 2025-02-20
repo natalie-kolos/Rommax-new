@@ -21,6 +21,10 @@ body {
 .navbar-custom {
   padding: 24px 88px;
   z-index: 9999;
+  .nav{
+    gap: 8px;
+  }
+  
 
   .navbar-brand {
     background-image: url(../img/logo.svg);
@@ -35,6 +39,7 @@ body {
     font-size: 20px;
     font-weight: 600;
     opacity: 0.9;
+    padding: 8px;
 
     &:hover {
       opacity: 1;
@@ -64,13 +69,7 @@ body {
     }
   }
 
-  .btn-primary-custom {
-    display: none;
-
-    @media @breakpoint-tablet-xl {
-      display: block;
-    }
-  }
+  
 
   @media @breakpoint-tablet-xl {
     background-color: @secondary;
@@ -142,6 +141,15 @@ body {
 
     .btn-primary-custom {
       display: block;
+    }
+  }
+  .btn-secondary-custom{
+    background-color: white;
+    color: @secondary;
+    svg{
+      path{
+        fill: @secondary;
+      }
     }
   }
 }
@@ -366,6 +374,11 @@ form {
   font-weight: 800;
   font-size: 16px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  i{
+    width: 24px;
+  }
 }
 
 .btn-primary-custom {
@@ -1119,6 +1132,7 @@ footer {
 
   .nav {
     margin-bottom: 16px;
+    gap: 8px;
 
     .nav-item {
       .nav-link {
@@ -1129,6 +1143,7 @@ footer {
         line-height: 160%;
         /* 25.6px */
         padding-left: 0;
+        
       }
     }
   }
@@ -1655,4 +1670,100 @@ footer {
       align-items: flex-start;
     }
   }
+}
+
+// Custom Menu Dropdown
+
+@desktop: 1200px;
+@tablet: 1199px;
+
+/* Меню dropdown на больших экранах */
+@media (min-width: @desktop) {
+  .navbar-expand-xl .navbar-nav .dropdown-menu {
+    top: 32px;
+  }
+}
+
+/* Для десктопа: показываем dropdown при наведении */
+@media (min-width: @tablet) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    top: 40px;
+  }
+
+  .dropdown-toggle-custom {
+    pointer-events: none; // Делаем стрелку некликабельной на десктопе
+  }
+}
+
+.dropdown-item.active, .dropdown-item:active {
+  color: @primary;
+  background-color: transparent;
+}
+
+/* Стрелка для dropdown */
+.dropdown-toggle-custom {
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  
+
+  svg {
+    width: 12px;
+    height: 12px;
+  }
+}
+
+/* Для мобильных: стрелка кликабельная */
+@media (max-width: @desktop) {
+  .dropdown-toggle-custom {
+    pointer-events: auto; // Активируем кликабельность
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+  }
+
+  .navbar-nav .dropdown-menu {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar-custom .nav-link {
+    
+    padding-right: 54px;
+}
+.navbar-custom .btn-secondary-custom{
+  background-color: white;
+  color: @secondary;
+  svg{
+    path{
+      fill: @secondary;
+    }
+  }
+}
+}
+
+/* Отступ для ссылки внутри dropdown */
+.dropdown .nav-link {
+  padding-right: 4px !important;
+}
+
+/* Стили для пунктов выпадающего меню */
+.dropdown-item {
+  font-weight: 600;
+}
+
+.navbar-custom .nav-item{
+  display: flex;
+  align-items: center;
+}
+
+.dropdown-menu.show {
+  display: block;
+  width: 100%;
+  text-align: right;
 }

@@ -40,6 +40,9 @@ body {
   padding: 24px 88px;
   z-index: 9999;
 }
+.navbar-custom .nav {
+  gap: 8px;
+}
 .navbar-custom .navbar-brand {
   background-image: url(../img/logo.svg);
   background-repeat: no-repeat;
@@ -52,6 +55,7 @@ body {
   font-size: 20px;
   font-weight: 600;
   opacity: 0.9;
+  padding: 8px;
 }
 .navbar-custom .nav-link:hover {
   opacity: 1;
@@ -75,14 +79,6 @@ body {
   .navbar-custom .nav-link-contrast {
     background-color: transparent;
     font-size: 24px;
-  }
-}
-.navbar-custom .btn-primary-custom {
-  display: none;
-}
-@media (max-width: 1199px) {
-  .navbar-custom .btn-primary-custom {
-    display: block;
   }
 }
 @media (max-width: 1199px) {
@@ -145,6 +141,13 @@ body {
 }
 .navbar-scroll-changed .navbar-scroll-visible .btn-primary-custom {
   display: block;
+}
+.navbar-scroll-changed .btn-secondary-custom {
+  background-color: white;
+  color: #1f1a17;
+}
+.navbar-scroll-changed .btn-secondary-custom svg path {
+  fill: #1f1a17;
 }
 .navbar-scroll-regular {
   transition: 0.6s ease all;
@@ -352,6 +355,11 @@ form.form-main.form-secondary {
   font-weight: 800;
   font-size: 16px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+.btn i {
+  width: 24px;
 }
 .btn-primary-custom {
   background-color: #ed2c2c;
@@ -970,6 +978,7 @@ footer .text-muted {
 }
 .footer-navbar .nav {
   margin-bottom: 16px;
+  gap: 8px;
 }
 .footer-navbar .nav .nav-item .nav-link {
   color: #f9f9f5;
@@ -1375,4 +1384,79 @@ footer .text-muted {
     gap: 0;
     align-items: flex-start;
   }
+}
+/* Меню dropdown на больших экранах */
+@media (min-width: 1200px) {
+  .navbar-expand-xl .navbar-nav .dropdown-menu {
+    top: 32px;
+  }
+}
+/* Для десктопа: показываем dropdown при наведении */
+@media (min-width: 1199px) {
+  .nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+    top: 40px;
+  }
+  .dropdown-toggle-custom {
+    pointer-events: none;
+  }
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  color: #ed2c2c;
+  background-color: transparent;
+}
+/* Стрелка для dropdown */
+.dropdown-toggle-custom {
+  border: none;
+  background: none;
+  padding: 0;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.dropdown-toggle-custom svg {
+  width: 12px;
+  height: 12px;
+}
+/* Для мобильных: стрелка кликабельная */
+@media (max-width: 1200px) {
+  .dropdown-toggle-custom {
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+  }
+  .navbar-nav .dropdown-menu {
+    flex-direction: column;
+    width: 100%;
+  }
+  .navbar-custom .nav-link {
+    padding-right: 54px;
+  }
+  .navbar-custom .btn-secondary-custom {
+    background-color: white;
+    color: #1f1a17;
+  }
+  .navbar-custom .btn-secondary-custom svg path {
+    fill: #1f1a17;
+  }
+}
+/* Отступ для ссылки внутри dropdown */
+.dropdown .nav-link {
+  padding-right: 4px !important;
+}
+/* Стили для пунктов выпадающего меню */
+.dropdown-item {
+  font-weight: 600;
+}
+.navbar-custom .nav-item {
+  display: flex;
+  align-items: center;
+}
+.dropdown-menu.show {
+  display: block;
+  width: 100%;
+  text-align: right;
 }
