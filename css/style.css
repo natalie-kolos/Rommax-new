@@ -1186,3 +1186,25 @@ footer .text-muted {
   background-position: center;
   padding: 56px 0;
 }
+.check-block {
+  margin-bottom: 24px;
+}
+.check-block h4 {
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.check-block h4:before {
+  content: url(..//img/icon-doblecheck.svg);
+  display: inline-flex;
+  position: relative;
+  margin-right: 12px;
+  background-color: red;
+  border-radius: 32px;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  line-height: 0.8;
+}
